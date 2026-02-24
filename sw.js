@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ramadan-2026-v1';
+const CACHE_NAME = 'ramadan-2026-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -8,16 +8,16 @@ const ASSETS = [
   'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap'
 ];
 
-// Install: Cache all assets
+// Install: Cache all assets and force waiting service worker to become active
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(ASSETS))
-      .then(() => self.skipWaiting())
   );
 });
 
-// Activate: Clean old caches
+// Activate: Clean old caches and claim clients immediately
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -26,25 +26,39 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch: Cache-first strategy
+// Fetch: Network First for HTML, Cache First for assets
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(cached => cached || fetch(event.request)
+  // Check if request is for navigation (HTML)
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
         .then(response => {
-          // Cache new requests dynamically (e.g. Google Fonts files)
-          if (response.ok && event.request.url.startsWith('http')) {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-          }
+          // Update cache with new version
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
           return response;
         })
-      )
-      .catch(() => {
-        // Offline fallback
-        if (event.request.mode === 'navigate') {
-          return caches.match('./index.html');
-        }
-      })
-  );
+        .catch(() => {
+          // Network failed, fall back to cache
+          return caches.match(event.request).then(cached => {
+             return cached || caches.match('./index.html');
+          });
+        })
+    );
+  } else {
+    // Cache First for other assets (images, fonts, etc.)
+    event.respondWith(
+      caches.match(event.request)
+        .then(cached => cached || fetch(event.request)
+          .then(response => {
+            // Cache new requests dynamically
+            if (response.ok && event.request.url.startsWith('http')) {
+              const clone = response.clone();
+              caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+            }
+            return response;
+          })
+        )
+    );
+  }
 });

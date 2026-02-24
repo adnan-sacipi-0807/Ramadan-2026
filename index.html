@@ -483,7 +483,42 @@ function downloadICS(){const b=new Blob([generateICS()],{type:"text/calendar;cha
 // PWA – Service Worker & Install
 // ============================================================
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js').then(r=>{console.log('SW registered',r.scope)}).catch(e=>{console.log('SW failed',e)});
+  navigator.serviceWorker.register('sw.js').then(reg => {
+    console.log('SW registered', reg.scope);
+
+    // Check for updates on load
+    if (reg.waiting) {
+      // If there is already a waiting worker, we might want to reload or notify
+      // But skipWaiting() in SW should handle this.
+    }
+
+    reg.onupdatefound = () => {
+      const installingWorker = reg.installing;
+      if (installingWorker) {
+        installingWorker.onstatechange = () => {
+          if (installingWorker.state === 'installed') {
+            if (navigator.serviceWorker.controller) {
+              // New update available
+              console.log('New content available; please refresh.');
+              // The SW calls skipWaiting(), so controllerchange will fire
+            } else {
+              // Content is cached for the first time
+              console.log('Content is cached for offline use.');
+            }
+          }
+        };
+      }
+    };
+  }).catch(e=>{console.log('SW failed',e)});
+
+  // Refresh page when new SW takes control
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
+  });
 }
 
 let deferredPrompt;
