@@ -167,6 +167,8 @@
   @supports(padding: env(safe-area-inset-top)) {
     body { padding-top:env(safe-area-inset-top); padding-bottom:env(safe-area-inset-bottom); }
   }
+  .label-highlight { font-size:24px !important; font-weight:800 !important; color:var(--gold-bright) !important; letter-spacing:1px !important; text-shadow:0 0 20px rgba(212,168,83,0.4); }
+  .footer-powered-by { margin-top:16px; padding-top:12px; border-top:1px solid rgba(212,168,83,0.08); font-size:11px; letter-spacing:1.5px; color:rgba(232,224,208,0.8); font-weight:700; }
 </style>
 </head>
 <body>
@@ -186,7 +188,7 @@
   <header class="header">
     <div class="header-sub">Albanisch-Islamischer Verein Winterthur</div>
     <h1>Ramadan 2026</h1>
-    <p class="header-info">19. Februar – 19. März · 29 Fastentage · Kronaustrasse 6</p>
+    <p class="header-info">19. Februar – 19. März · 29 Fastentage</p>
     <div class="day-badge hidden" id="dayBadge">
       <div class="day-badge-dot"></div>
       <span class="day-badge-text" id="dayBadgeText"></span>
@@ -253,7 +255,7 @@
     </div>
 
     <button class="ics-btn" onclick="downloadICS()">📅 Kalender herunterladen (.ics)</button>
-    <div class="ics-hint">Imsaku: 30 + 10 Min. vorher · Iftar: 15 + 5 Min. vorher · Bajram inklusive</div>
+    <div class="ics-hint">Importiere alle Zeiten direkt in deinen Handy-Kalender! Inkl. automatischer Erinnerungen vor Imsaku (30 & 10 Min.) und Iftar (15 & 5 Min.) sowie dem Termin für Bajram.</div>
 
     <div class="upcoming hidden" id="upcoming">
       <div class="upcoming-title">Nächste Tage</div>
@@ -337,9 +339,11 @@
   </div>
 
   <footer>
-    Urime muaji i bekuar i Ramazanit<br>
-    Albanisch-Islamischer Verein Winterthur · 2026
-    <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(212,168,83,0.08);font-size:9px;letter-spacing:1.5px;color:rgba(232,224,208,0.25)">
+    Urime muaji i bekuar i Ramazanit
+    <div style="margin-top:12px;margin-bottom:12px;line-height:1.4;max-width:400px;margin-left:auto;margin-right:auto;">
+      Hinweis: Die Kalendertage und Gebetszeiten werden vom Albanisch-Islamischen Verein Winterthur vorgegeben und gelten speziell für den Raum Winterthur.
+    </div>
+    <div class="footer-powered-by">
       POWERED BY ADNAN SACIPI
     </div>
   </footer>
@@ -348,7 +352,7 @@
 <script>
 // ============================================================
 // GEBETSZEITEN – Ramadan 2026: 19. Feb – 19. Mär (29 Tage)
-// Albanisch-Islamischer Verein Winterthur, Kronaustrasse 6
+// Albanisch-Islamischer Verein Winterthur
 // ============================================================
 const P=[
   {day:1, date:"2026-02-19",im:"05:42",ld:"07:18",dr:"12:45",ik:"15:29",ak:"18:01",ja:"19:25"},
@@ -431,7 +435,9 @@ document.getElementById("allTimesGrid").innerHTML=times.map(p=>`<div class="all-
 const ns=now.getHours()*3600+now.getMinutes()*60+now.getSeconds(),imS=t2s(td.im),akS=t2s(td.ak);
 let label,value,fasting=false,pct=0;
 if(ns<imS){label="Suhoor endet in";value=fCd(imS-ns)}else if(ns<akS){label="Iftar in";value=fCd(akS-ns);fasting=true;pct=Math.min(((ns-imS)/(akS-imS))*100,100)}else{label="Alhamdulillah!";value="Iftar Zeit!";pct=100}
-document.getElementById("cdLabel").textContent=label;const cv=document.getElementById("cdValue");cv.textContent=value;
+const lblEl=document.getElementById("cdLabel");lblEl.textContent=label;
+if(label==="Alhamdulillah!"){lblEl.classList.add("label-highlight")}else{lblEl.classList.remove("label-highlight")}
+const cv=document.getElementById("cdValue");cv.textContent=value;
 cv.style.color=fasting?"var(--gold)":"var(--green)";cv.style.textShadow=fasting?"0 0 40px rgba(212,168,83,0.2)":"0 0 40px rgba(92,201,167,0.2)";
 const badge=document.getElementById("statusBadge");
 if(fasting){badge.textContent="Fastenzeit";badge.style.background="rgba(212,168,83,0.18)";badge.style.color="var(--gold)"}
