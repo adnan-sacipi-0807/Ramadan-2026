@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Ramadan 2026 – Gebetszeiten Winterthur</title>
+<meta name="description" content="Gebetszeiten und Fastenkalender Ramadan 2026 – Albanisch-Islamischer Verein Winterthur">
+<meta name="theme-color" content="#080f1e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ramadan 2026">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #d4a853; --gold-bright: #f0d078; --gold-dim: rgba(212,168,83,0.12);
+    --bg: #080f1e; --bg-card: rgba(255,255,255,0.025);
+    --text: #e8e0d0; --text-dim: rgba(232,224,208,0.4); --text-mid: rgba(232,224,208,0.65);
+    --blue: #5a9ecf; --green: #5cc9a7; --purple: #b088f9;
+    --border: rgba(212,168,83,0.1); --border-light: rgba(255,255,255,0.04);
+    --font: 'DM Sans', system-ui, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    min-height:100vh; min-height:100dvh;
+    background: radial-gradient(ellipse at 20% 0%,rgba(212,168,83,0.04) 0%,transparent 50%),
+                radial-gradient(ellipse at 80% 100%,rgba(90,158,207,0.03) 0%,transparent 50%), var(--bg);
+    color:var(--text); font-family:var(--font); overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .container { max-width:540px; margin:0 auto; padding:16px 16px 80px; position:relative; z-index:1; }
+
+  /* PWA Install Banner */
+  .install-banner {
+    display:none; align-items:center; justify-content:space-between; gap:12px;
+    background:linear-gradient(135deg,rgba(212,168,83,0.15),rgba(90,158,207,0.08));
+    border:1px solid rgba(212,168,83,0.2); border-radius:14px;
+    padding:14px 16px; margin-bottom:14px;
+  }
+  .install-banner.show { display:flex; }
+  .install-banner-text { font-size:12px; color:var(--text-mid); line-height:1.4; }
+  .install-banner-text strong { color:var(--gold); }
+  .install-btn {
+    flex-shrink:0; padding:8px 18px; border:none; border-radius:8px;
+    background:var(--gold); color:var(--bg); font-family:var(--font);
+    font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap;
+  }
+  .install-btn:hover { background:var(--gold-bright); }
+  .install-dismiss { background:none; border:none; color:var(--text-dim); cursor:pointer; font-size:18px; padding:4px; line-height:1; }
+
+  /* Stars */
+  .stars { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .star { position:absolute; border-radius:50%; background:rgba(212,168,83,0.6); animation:twinkle 4s ease-in-out infinite alternate; }
+  @keyframes twinkle { 0%{opacity:0.1;transform:scale(0.8)} 100%{opacity:0.5;transform:scale(1.2)} }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* Header */
+  .header { text-align:center; padding:20px 0 16px; }
+  .header-sub { font-size:9px; font-weight:600; letter-spacing:6px; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+  .header h1 {
+    font-family:var(--font-display); font-size:40px; font-weight:800;
+    margin:0 0 4px; letter-spacing:1px; line-height:1.1;
+    background:linear-gradient(135deg,var(--text) 30%,var(--gold));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .header-info { font-size:12px; color:var(--text-dim); margin:4px 0 0; }
+  .day-badge {
+    margin-top:10px; display:inline-flex; align-items:center; gap:6px;
+    background:var(--gold-dim); border:1px solid var(--border); border-radius:20px; padding:5px 16px;
+  }
+  .day-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); animation:pulse 2s ease-in-out infinite; }
+  .day-badge-text { font-size:12px; color:var(--gold); font-weight:600; }
+
+  /* Tabs */
+  .tabs { display:flex; gap:3px; margin-bottom:18px; background:rgba(0,0,0,0.35); border-radius:12px; padding:3px; border:1px solid var(--border-light); }
+  .tab {
+    flex:1; padding:10px 6px; border:none; border-radius:10px; background:transparent; color:var(--text-dim);
+    font-family:var(--font); font-size:12px; font-weight:400; cursor:pointer; transition:all 0.25s ease; letter-spacing:0.3px;
+  }
+  .tab.active { background:var(--gold-dim); color:var(--gold); font-weight:600; }
+
+  /* Card */
+  .card {
+    background:linear-gradient(160deg,rgba(212,168,83,0.06) 0%,rgba(0,0,0,0.4) 100%);
+    border:1px solid var(--border); border-radius:18px; padding:24px 20px; margin-bottom:14px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+  }
+  .card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px; }
+  .card-day { font-family:var(--font-display); font-size:26px; font-weight:700; line-height:1; }
+  .card-date { font-size:12px; color:var(--text-dim); margin-top:4px; }
+  .status-badge { padding:5px 14px; border-radius:20px; font-size:11px; font-weight:600; }
+  .countdown-section { text-align:center; margin:16px 0 20px; }
+  .countdown-label { font-size:10px; color:var(--text-dim); letter-spacing:4px; text-transform:uppercase; margin-bottom:10px; font-weight:500; }
+  .countdown-value { font-family:var(--font-display); font-size:60px; font-weight:800; line-height:1; letter-spacing:3px; }
+  .progress-wrap { margin:0 0 20px; }
+  .progress-bar { height:6px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden; }
+  .progress-fill {
+    height:100%; border-radius:3px;
+    background:linear-gradient(90deg,var(--blue) 0%,var(--gold) 70%,var(--gold-bright) 100%);
+    transition:width 1s linear; box-shadow:0 0 12px rgba(212,168,83,0.3);
+  }
+  .progress-labels { display:flex; justify-content:space-between; margin-top:7px; font-size:11px; color:var(--text-dim); }
+  .times-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .time-card { background:rgba(0,0,0,0.25); border-radius:14px; padding:16px; }
+  .time-card-label { font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:8px; }
+  .time-card-value { font-family:var(--font-display); font-size:34px; font-weight:700; line-height:1; }
+  .time-card-desc { font-size:10px; color:var(--text-dim); margin-top:4px; }
+  .all-times { margin-top:14px; padding:14px; background:rgba(0,0,0,0.2); border-radius:12px; }
+  .all-times-title { font-size:9px; font-weight:700; letter-spacing:2.5px; color:var(--text-dim); text-transform:uppercase; margin-bottom:10px; }
+  .all-times-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; }
+  .all-times-item { text-align:center; }
+  .all-times-item-label { font-size:9px; color:var(--text-dim); margin-bottom:3px; }
+  .all-times-item-value { font-size:14px; font-weight:600; }
+
+  /* Buttons */
+  .ics-btn {
+    display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:15px; margin-bottom:4px;
+    background:linear-gradient(135deg,rgba(212,168,83,0.15),rgba(212,168,83,0.04));
+    border:1px solid rgba(212,168,83,0.25); border-radius:14px;
+    color:var(--gold); font-size:14px; font-family:var(--font); font-weight:600; cursor:pointer;
+    transition:all 0.2s; letter-spacing:0.3px;
+  }
+  .ics-btn:hover { background:rgba(212,168,83,0.22); }
+  .ics-hint { font-size:10px; color:var(--text-dim); text-align:center; margin-bottom:18px; }
+
+  /* Upcoming */
+  .upcoming { background:var(--bg-card); border:1px solid var(--border-light); border-radius:14px; overflow:hidden; }
+  .upcoming-title { padding:12px 16px; font-size:9px; font-weight:700; letter-spacing:2.5px; color:var(--text-dim); text-transform:uppercase; border-bottom:1px solid var(--border-light); }
+  .upcoming-row { display:flex; justify-content:space-between; align-items:center; padding:11px 16px; border-bottom:1px solid var(--border-light); }
+
+  /* Table */
+  .table-wrap { background:var(--bg-card); border:1px solid var(--border-light); border-radius:14px; overflow:hidden; }
+  .table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { padding:13px 5px; text-align:center; font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); position:sticky; top:0; background:var(--bg); z-index:2; }
+  th.col-im { color:var(--blue); } th.col-ak { color:var(--gold); }
+  td { padding:10px 5px; text-align:center; }
+  tr { border-bottom:1px solid var(--border-light); }
+  tr.today { background:rgba(212,168,83,0.08); }
+  tr.past { opacity:0.35; }
+  tr.kadri-row { background:rgba(176,136,249,0.04); }
+  .table-footer { padding:10px 14px; font-size:10px; color:var(--text-dim); border-top:1px solid var(--border-light); }
+  .bajram-row { border-top:1px solid var(--border); background:rgba(212,168,83,0.06); }
+
+  /* Special */
+  .special-card { border-radius:18px; padding:28px 22px; margin-bottom:16px; position:relative; overflow:hidden; }
+  .special-card.kadri { background:linear-gradient(160deg,rgba(176,136,249,0.1) 0%,rgba(0,0,0,0.35) 100%); border:1px solid rgba(176,136,249,0.2); }
+  .special-card.bajram { background:linear-gradient(160deg,rgba(212,168,83,0.1) 0%,rgba(0,0,0,0.35) 100%); border:1px solid rgba(212,168,83,0.2); }
+  .special-watermark { position:absolute; top:12px; right:16px; font-size:48px; opacity:0.08; font-family:var(--font-display); }
+  .special-tag { font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:6px; }
+  .special-title { font-family:var(--font-display); font-size:28px; font-weight:700; margin:0 0 4px; }
+  .special-subtitle { font-size:13px; color:var(--text-mid); margin-bottom:16px; font-style:italic; }
+  .special-desc { border-radius:12px; padding:14px 16px; margin-bottom:16px; font-size:12px; font-weight:500; line-height:1.7; }
+  .special-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .special-grid-item { background:rgba(0,0,0,0.2); border-radius:10px; padding:12px 14px; }
+  .special-grid-label { font-size:9px; font-weight:700; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:4px; }
+  .special-countdown { margin-top:14px; text-align:center; font-size:13px; font-weight:500; }
+  .placeholder { background:var(--gold-dim); border:1px solid var(--border); border-radius:14px; padding:28px; text-align:center; margin-bottom:16px; }
+  footer { text-align:center; margin-top:32px; font-size:10px; color:var(--text-dim); line-height:1.7; }
+  .hidden { display:none !important; }
+
+  /* Safe area for notched phones */
+  @supports(padding: env(safe-area-inset-top)) {
+    body { padding-top:env(safe-area-inset-top); padding-bottom:env(safe-area-inset-bottom); }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+
+  <!-- PWA Install Banner -->
+  <div class="install-banner" id="installBanner">
+    <div class="install-banner-text"><strong>Als App installieren</strong><br>Ramadan-Zeiten direkt vom Homescreen – auch offline verfügbar.</div>
+    <button class="install-btn" id="installBtn">Installieren</button>
+    <button class="install-dismiss" id="installDismiss">&times;</button>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-sub">Albanisch-Islamischer Verein Winterthur</div>
+    <h1>Ramadan 2026</h1>
+    <p class="header-info">19. Februar – 19. März · 29 Fastentage · Kronaustrasse 6</p>
+    <div class="day-badge hidden" id="dayBadge">
+      <div class="day-badge-dot"></div>
+      <span class="day-badge-text" id="dayBadgeText"></span>
+    </div>
+  </header>
+
+  <!-- Tabs -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="home">Heute</button>
+    <button class="tab" data-tab="table">Kalender</button>
+    <button class="tab" data-tab="special">Besondere Tage</button>
+  </nav>
+
+  <!-- HOME TAB -->
+  <div id="tab-home">
+    <div id="bajramBanner" class="hidden" style="background:linear-gradient(135deg,rgba(212,168,83,0.2),rgba(176,136,249,0.15));border:1px solid rgba(212,168,83,0.3);border-radius:14px;padding:20px;margin-bottom:16px;text-align:center;">
+      <div style="font-size:32px;margin-bottom:8px">🎉</div>
+      <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--gold-bright)">Gez. Bajrami Mubarek!</div>
+      <div style="font-size:13px;color:var(--text-mid);margin-top:6px">Bajram Namazi um <strong style="color:var(--gold)">07:00</strong> Uhr</div>
+    </div>
+
+    <div id="countdownCard" class="card hidden">
+      <div class="card-header">
+        <div>
+          <div class="card-day" id="cardDay"></div>
+          <div class="card-date" id="cardDate"></div>
+          <div id="kadriLabel" class="hidden" style="margin-top:6px;font-size:11px;color:var(--purple);font-weight:600">✦ Nata e Kadrit</div>
+        </div>
+        <div class="status-badge" id="statusBadge"></div>
+      </div>
+      <div class="countdown-section">
+        <div class="countdown-label" id="cdLabel"></div>
+        <div class="countdown-value" id="cdValue"></div>
+      </div>
+      <div class="progress-wrap hidden" id="progressWrap">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-labels">
+          <span id="progressStart"></span>
+          <span id="progressPct" style="color:var(--gold);font-weight:600"></span>
+          <span id="progressEnd"></span>
+        </div>
+      </div>
+      <div class="times-grid">
+        <div class="time-card" style="border:1px solid rgba(90,158,207,0.12)">
+          <div class="time-card-label" style="color:var(--blue)">Imsaku</div>
+          <div class="time-card-value" style="color:var(--blue)" id="todayImsaku"></div>
+          <div class="time-card-desc">Suhoor Ende</div>
+        </div>
+        <div class="time-card" style="border:1px solid var(--border)">
+          <div class="time-card-label" style="color:var(--gold)">Akshami</div>
+          <div class="time-card-value" style="color:var(--gold)" id="todayAkshami"></div>
+          <div class="time-card-desc">Fastenbrechen</div>
+        </div>
+      </div>
+      <div class="all-times">
+        <div class="all-times-title">Alle Gebetszeiten heute</div>
+        <div class="all-times-grid" id="allTimesGrid"></div>
+      </div>
+    </div>
+
+    <div id="placeholder" class="placeholder hidden">
+      <div style="font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:8px">Ramadan 2026</div>
+      <div style="font-size:13px;color:var(--text-dim)" id="placeholderText"></div>
+    </div>
+
+    <button class="ics-btn" onclick="downloadICS()">📅 Kalender herunterladen (.ics)</button>
+    <div class="ics-hint">Imsaku: 30 + 10 Min. vorher · Iftar: 15 + 5 Min. vorher · Bajram inklusive</div>
+
+    <div class="upcoming hidden" id="upcoming">
+      <div class="upcoming-title">Nächste Tage</div>
+      <div id="upcomingRows"></div>
+    </div>
+  </div>
+
+  <!-- TABLE TAB -->
+  <div id="tab-table" class="hidden">
+    <button class="ics-btn" onclick="downloadICS()" style="margin-bottom:14px">📅 Kalender herunterladen (.ics)</button>
+    <div class="table-wrap">
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th>Tag</th><th>Datum</th><th class="col-im">Imsaku</th>
+            <th>L.Diellit</th><th>Dreka</th><th>Ikndia</th>
+            <th class="col-ak">Akshami</th><th>Jacia</th>
+          </tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="table-footer">✦ = Nata e Kadrit · Albanisch-Islamischer Verein Winterthur</div>
+    </div>
+  </div>
+
+  <!-- SPECIAL TAB -->
+  <div id="tab-special" class="hidden">
+    <div class="special-card kadri">
+      <div class="special-watermark">✦</div>
+      <div class="special-tag" style="color:var(--purple)">Tag 26 des Ramadan</div>
+      <h2 class="special-title" style="color:#d4bfff">Nata e Kadrit</h2>
+      <div class="special-subtitle">Laylatul Qadr – Die Nacht der Bestimmung</div>
+      <div class="special-desc" style="background:rgba(176,136,249,0.06);border:1px solid rgba(176,136,249,0.1);color:#d4bfff">
+        «Besser als 1000 Monate» – In dieser Nacht wurde der Koran herabgesandt. Es ist die heiligste Nacht im Islam, in der Bittgebete besonders erhört werden.
+      </div>
+      <div class="special-grid">
+        <div class="special-grid-item">
+          <div class="special-grid-label">Datum</div>
+          <div style="font-size:16px;font-weight:700">16. März 2026</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:2px">Montag (Nacht auf Dienstag)</div>
+        </div>
+        <div class="special-grid-item">
+          <div class="special-grid-label">Gebetszeiten</div>
+          <div style="font-size:13px;font-weight:600;line-height:1.8">
+            <span style="color:var(--blue)">Imsaku: 04:55</span><br>
+            <span style="color:var(--gold)">Akshami: 18:39</span><br>
+            <span>Jacia: 20:02</span>
+          </div>
+        </div>
+      </div>
+      <div class="special-countdown" style="color:var(--purple)" id="kadriCountdown"></div>
+    </div>
+
+    <div class="special-card bajram">
+      <div class="special-watermark" style="opacity:0.1">🎉</div>
+      <div class="special-tag" style="color:var(--gold)">Nach dem Ramadan</div>
+      <h2 class="special-title" style="color:var(--gold-bright)">Fiter Bajrami</h2>
+      <div class="special-subtitle">Eid al-Fitr – Fest des Fastenbrechens</div>
+      <div class="special-desc" style="background:rgba(212,168,83,0.06);border:1px solid var(--border);color:var(--gold-bright)">
+        Das Fest nach dem heiligen Monat Ramadan. Ein Tag der Freude, des Dankes, der Familie und des Gebets. Gez. Bajrami Mubarek!
+      </div>
+      <div class="special-grid">
+        <div class="special-grid-item">
+          <div class="special-grid-label">Datum</div>
+          <div style="font-size:16px;font-weight:700">20. März 2026</div>
+          <div style="font-size:11px;color:var(--text-dim);margin-top:2px">Freitag</div>
+        </div>
+        <div class="special-grid-item">
+          <div class="special-grid-label" style="color:var(--gold)">Bajram Namazi</div>
+          <div style="font-family:var(--font-display);font-size:30px;font-weight:700;color:var(--gold)">07:00</div>
+          <div style="font-size:10px;color:var(--text-dim);margin-top:2px">Festgebet</div>
+        </div>
+      </div>
+      <div class="special-countdown" style="color:var(--gold)" id="bajramCountdown"></div>
+    </div>
+
+    <button class="ics-btn" onclick="downloadICS()">📅 Alle Events als .ics herunterladen</button>
+    <div style="font-size:10px;color:var(--text-dim);text-align:center;margin-top:4px">
+      Enthält Nata e Kadrit + Bajram Gebet mit Erinnerungen
+    </div>
+  </div>
+
+  <footer>
+    Urime muaji i bekuar i Ramazanit<br>
+    Albanisch-Islamischer Verein Winterthur · 2026
+    <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(212,168,83,0.08);font-size:9px;letter-spacing:1.5px;color:rgba(232,224,208,0.25)">
+      POWERED BY ADNAN SACIPI
+    </div>
+  </footer>
+</div>
+
+<script>
+// ============================================================
+// GEBETSZEITEN – Ramadan 2026: 19. Feb – 19. Mär (29 Tage)
+// Albanisch-Islamischer Verein Winterthur, Kronaustrasse 6
+// ============================================================
+const P=[
+  {day:1, date:"2026-02-19",im:"05:42",ld:"07:18",dr:"12:45",ik:"15:29",ak:"18:01",ja:"19:25"},
+  {day:2, date:"2026-02-20",im:"05:41",ld:"07:16",dr:"12:45",ik:"15:30",ak:"18:03",ja:"19:27"},
+  {day:3, date:"2026-02-21",im:"05:39",ld:"07:14",dr:"12:44",ik:"15:31",ak:"18:05",ja:"19:28"},
+  {day:4, date:"2026-02-22",im:"05:37",ld:"07:13",dr:"12:44",ik:"15:33",ak:"18:06",ja:"19:29"},
+  {day:5, date:"2026-02-23",im:"05:36",ld:"07:11",dr:"12:44",ik:"15:34",ak:"18:08",ja:"19:31"},
+  {day:6, date:"2026-02-24",im:"05:34",ld:"07:09",dr:"12:44",ik:"15:35",ak:"18:09",ja:"19:32"},
+  {day:7, date:"2026-02-25",im:"05:32",ld:"07:07",dr:"12:44",ik:"15:36",ak:"18:11",ja:"19:34"},
+  {day:8, date:"2026-02-26",im:"05:30",ld:"07:05",dr:"12:44",ik:"15:37",ak:"18:12",ja:"19:35"},
+  {day:9, date:"2026-02-27",im:"05:29",ld:"07:04",dr:"12:44",ik:"15:38",ak:"18:14",ja:"19:37"},
+  {day:10,date:"2026-02-28",im:"05:27",ld:"07:02",dr:"12:43",ik:"15:39",ak:"18:15",ja:"19:38"},
+  {day:11,date:"2026-03-01",im:"05:25",ld:"07:00",dr:"12:43",ik:"15:40",ak:"18:17",ja:"19:40"},
+  {day:12,date:"2026-03-02",im:"05:23",ld:"06:58",dr:"12:43",ik:"15:41",ak:"18:18",ja:"19:41"},
+  {day:13,date:"2026-03-03",im:"05:21",ld:"06:56",dr:"12:42",ik:"15:42",ak:"18:20",ja:"19:43"},
+  {day:14,date:"2026-03-04",im:"05:19",ld:"06:54",dr:"12:43",ik:"15:43",ak:"18:21",ja:"19:44"},
+  {day:15,date:"2026-03-05",im:"05:17",ld:"06:52",dr:"12:42",ik:"15:44",ak:"18:23",ja:"19:45"},
+  {day:16,date:"2026-03-06",im:"05:15",ld:"06:50",dr:"12:42",ik:"15:44",ak:"18:24",ja:"19:47"},
+  {day:17,date:"2026-03-07",im:"05:13",ld:"06:48",dr:"12:42",ik:"15:46",ak:"18:26",ja:"19:48"},
+  {day:18,date:"2026-03-08",im:"05:11",ld:"06:46",dr:"12:42",ik:"15:47",ak:"18:27",ja:"19:50"},
+  {day:19,date:"2026-03-09",im:"05:09",ld:"06:45",dr:"12:41",ik:"15:48",ak:"18:28",ja:"19:51"},
+  {day:20,date:"2026-03-10",im:"05:07",ld:"06:43",dr:"12:41",ik:"15:49",ak:"18:30",ja:"19:53"},
+  {day:21,date:"2026-03-11",im:"05:05",ld:"06:41",dr:"12:41",ik:"15:50",ak:"18:31",ja:"19:55"},
+  {day:22,date:"2026-03-12",im:"05:03",ld:"06:39",dr:"12:41",ik:"15:51",ak:"18:33",ja:"19:56"},
+  {day:23,date:"2026-03-13",im:"05:01",ld:"06:37",dr:"12:40",ik:"15:52",ak:"18:34",ja:"19:58"},
+  {day:24,date:"2026-03-14",im:"04:59",ld:"06:35",dr:"12:40",ik:"15:53",ak:"18:36",ja:"19:59"},
+  {day:25,date:"2026-03-15",im:"04:57",ld:"06:33",dr:"12:40",ik:"15:54",ak:"18:37",ja:"20:01"},
+  {day:26,date:"2026-03-16",im:"04:55",ld:"06:31",dr:"12:40",ik:"15:55",ak:"18:39",ja:"20:02",special:"kadri"},
+  {day:27,date:"2026-03-17",im:"04:53",ld:"06:29",dr:"12:39",ik:"15:56",ak:"18:40",ja:"20:04"},
+  {day:28,date:"2026-03-18",im:"04:50",ld:"06:27",dr:"12:39",ik:"15:56",ak:"18:41",ja:"20:05"},
+  {day:29,date:"2026-03-19",im:"04:48",ld:"06:25",dr:"12:39",ik:"15:57",ak:"18:43",ja:"20:07"},
+];
+const BAJRAM="2026-03-20",KADRI="2026-03-16";
+const WD=["So","Mo","Di","Mi","Do","Fr","Sa"];
+const WDL={So:"Sonntag",Mo:"Montag",Di:"Dienstag",Mi:"Mittwoch",Do:"Donnerstag",Fr:"Freitag",Sa:"Samstag"};
+function wd(d){return WD[new Date(d+"T12:00:00").getDay()]}
+function wdl(d){return WDL[wd(d)]}
+function fD(d){const p=d.split("-");return p[2]+"."+p[1]+"."+p[0]}
+function fDs(d){return d.split("-").slice(1).reverse().join(".")}
+function t2s(t){const[h,m]=t.split(":").map(Number);return h*3600+m*60}
+function fCd(s){if(s<0)return"--:--:--";const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0")}
+function todayISO(){const n=new Date();return n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0")}
+function daysUntil(d){return Math.ceil((new Date(d+"T12:00:00")-new Date(todayISO()+"T12:00:00"))/864e5)}
+
+// Stars
+!function(){const c=document.getElementById("stars");for(let i=0;i<40;i++){const d=document.createElement("div");d.className="star";d.style.left=Math.random()*100+"%";d.style.top=Math.random()*100+"%";const s=Math.random()*2+.5;d.style.width=s+"px";d.style.height=s+"px";d.style.opacity=Math.random()*.4+.1;d.style.animationDuration=(3+Math.random()*5)+"s";d.style.animationDelay=Math.random()*5+"s";c.appendChild(d)}}();
+
+// Tabs
+document.querySelectorAll(".tab").forEach(b=>{b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));b.classList.add("active");["home","table","special"].forEach(id=>{document.getElementById("tab-"+id).classList.toggle("hidden",id!==b.dataset.tab)})})});
+
+// Table
+!function(){const tb=document.getElementById("tableBody"),today=todayISO();let h="";
+P.forEach(d=>{const iT=d.date===today,iP=d.date<today,iK=d.special==="kadri";
+h+=`<tr class="${iP?"past":iT?"today":iK?"kadri-row":""}">`;
+h+=`<td style="font-weight:700;white-space:nowrap">${d.day}${iT?'<span style="color:var(--gold);font-size:7px;margin-left:2px;vertical-align:super">●</span>':""}${iK?'<span style="color:var(--purple);font-size:9px;margin-left:2px">✦</span>':""}</td>`;
+h+=`<td style="color:var(--text-dim);font-size:11px;white-space:nowrap">${wd(d.date)} ${fDs(d.date)}</td>`;
+h+=`<td style="color:var(--blue);font-weight:600">${d.im}</td>`;
+h+=`<td style="color:var(--text-dim)">${d.ld}</td><td style="color:var(--text-dim)">${d.dr}</td><td style="color:var(--text-dim)">${d.ik}</td>`;
+h+=`<td style="color:var(--gold);font-weight:600">${d.ak}</td><td style="color:var(--text-dim)">${d.ja}</td></tr>`});
+h+=`<tr class="bajram-row"><td colspan="2" style="padding:12px 8px;font-weight:700;color:var(--gold-bright);font-size:12px">🎉 20.03 – Fiter Bajrami</td><td colspan="6" style="padding:12px 8px;color:var(--gold);font-size:12px;text-align:center;font-weight:500">Namazi / Bajram Gebet: 07:00 Uhr</td></tr>`;
+tb.innerHTML=h}();
+
+// Special countdowns
+function updateSpecial(){const dk=daysUntil(KADRI),db=daysUntil(BAJRAM);
+document.getElementById("kadriCountdown").textContent=dk>0?`Noch ${dk} ${dk===1?"Tag":"Tage"}`:dk===0?"Heute Nacht!":"";
+document.getElementById("bajramCountdown").textContent=db>0?`Noch ${db} ${db===1?"Tag":"Tage"}`:db===0?"Heute! Bajrami Mubarek!":""}
+updateSpecial();
+
+// Main countdown
+function update(){const now=new Date(),today=todayISO(),idx=P.findIndex(d=>d.date===today),td=idx>=0?P[idx]:null,isBajram=today===BAJRAM;
+document.getElementById("bajramBanner").classList.toggle("hidden",!isBajram);
+if(idx>=0){document.getElementById("dayBadge").classList.remove("hidden");document.getElementById("dayBadgeText").textContent=`Tag ${idx+1} / 29`}else{document.getElementById("dayBadge").classList.add("hidden")}
+if(!td){document.getElementById("countdownCard").classList.add("hidden");document.getElementById("placeholder").classList.remove("hidden");const db=daysUntil(P[0].date);document.getElementById("placeholderText").textContent=db>0?`Countdown aktiv ab 19. Februar 2026 (noch ${db} Tage)`:"Ramadan ist vorbei. Bajrami Mubarek!";return}
+document.getElementById("countdownCard").classList.remove("hidden");document.getElementById("placeholder").classList.add("hidden");
+document.getElementById("cardDay").textContent="Tag "+td.day;document.getElementById("cardDate").textContent=wdl(td.date)+", "+fD(td.date);
+document.getElementById("kadriLabel").classList.toggle("hidden",td.special!=="kadri");
+document.getElementById("todayImsaku").textContent=td.im;document.getElementById("todayAkshami").textContent=td.ak;
+const times=[{n:"L.Diellit",t:td.ld},{n:"Dreka",t:td.dr},{n:"Ikndia",t:td.ik},{n:"Akshami",t:td.ak},{n:"Jacia",t:td.ja}];
+document.getElementById("allTimesGrid").innerHTML=times.map(p=>`<div class="all-times-item"><div class="all-times-item-label">${p.n}</div><div class="all-times-item-value">${p.t}</div></div>`).join("");
+const ns=now.getHours()*3600+now.getMinutes()*60+now.getSeconds(),imS=t2s(td.im),akS=t2s(td.ak);
+let label,value,fasting=false,pct=0;
+if(ns<imS){label="Suhoor endet in";value=fCd(imS-ns)}else if(ns<akS){label="Iftar in";value=fCd(akS-ns);fasting=true;pct=Math.min(((ns-imS)/(akS-imS))*100,100)}else{label="Alhamdulillah!";value="Iftar Zeit!";pct=100}
+document.getElementById("cdLabel").textContent=label;const cv=document.getElementById("cdValue");cv.textContent=value;
+cv.style.color=fasting?"var(--gold)":"var(--green)";cv.style.textShadow=fasting?"0 0 40px rgba(212,168,83,0.2)":"0 0 40px rgba(92,201,167,0.2)";
+const badge=document.getElementById("statusBadge");
+if(fasting){badge.textContent="Fastenzeit";badge.style.background="rgba(212,168,83,0.18)";badge.style.color="var(--gold)"}
+else if(pct>=100){badge.textContent="Iftar!";badge.style.background="rgba(92,201,167,0.18)";badge.style.color="var(--green)"}
+else{badge.textContent="Vor Imsaku";badge.style.background="rgba(90,158,207,0.18)";badge.style.color="var(--blue)"}
+const pw=document.getElementById("progressWrap");
+if(fasting){pw.classList.remove("hidden");document.getElementById("progressFill").style.width=pct+"%";document.getElementById("progressStart").textContent=td.im;document.getElementById("progressPct").textContent=Math.round(pct)+"%";document.getElementById("progressEnd").textContent=td.ak}else{pw.classList.add("hidden")}
+if(idx>=0&&idx<28){document.getElementById("upcoming").classList.remove("hidden");
+document.getElementById("upcomingRows").innerHTML=P.slice(idx+1,idx+4).map(d=>
+`<div class="upcoming-row"><div style="display:flex;align-items:center;gap:8px"><span style="font-weight:700;font-size:13px">Tag ${d.day}</span><span style="color:var(--text-dim);font-size:11px">${wd(d.date)} ${fD(d.date)}</span>${d.special==="kadri"?'<span style="font-size:10px;color:var(--purple);font-weight:600">✦ Kadri</span>':""}</div><div style="display:flex;gap:18px;font-size:13px"><span style="color:var(--blue);font-weight:500">${d.im}</span><span style="color:var(--gold);font-weight:600">${d.ak}</span></div></div>`).join("")}
+else{document.getElementById("upcoming").classList.add("hidden")}}
+update();setInterval(update,1000);setInterval(updateSpecial,60000);
+
+// ============================================================
+// ICS GENERATOR
+// ============================================================
+function generateICS(){const L=[
+"BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Ramadan2026Winterthur//DE","CALSCALE:GREGORIAN",
+"X-WR-CALNAME:Ramadan 2026 - Alb.-Isl. Verein Winterthur","X-WR-TIMEZONE:Europe/Zurich","",
+"BEGIN:VTIMEZONE","TZID:Europe/Zurich",
+"BEGIN:STANDARD","DTSTART:19701025T030000","RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU","TZOFFSETFROM:+0200","TZOFFSETTO:+0100","TZNAME:CET","END:STANDARD",
+"BEGIN:DAYLIGHT","DTSTART:19700329T020000","RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU","TZOFFSETFROM:+0100","TZOFFSETTO:+0200","TZNAME:CEST","END:DAYLIGHT",
+"END:VTIMEZONE"];
+P.forEach(d=>{const dc=d.date.replace(/-/g,""),[ih,im]=d.im.split(":"),[ah,am]=d.ak.split(":"),note=d.special==="kadri"?" (Nata e Kadrit)":"";
+L.push("BEGIN:VEVENT",`DTSTART;TZID=Europe/Zurich:${dc}T${ih}${im}00`,`DTEND;TZID=Europe/Zurich:${dc}T${ih}${im}00`,
+`SUMMARY:Imsaku - Tag ${d.day}${note}`,`DESCRIPTION:Suhoor Ende um ${d.im}${note}`,
+"BEGIN:VALARM","TRIGGER:-PT30M","ACTION:DISPLAY","DESCRIPTION:Imsaku in 30 Min!","END:VALARM",
+"BEGIN:VALARM","TRIGGER:-PT10M","ACTION:DISPLAY","DESCRIPTION:Imsaku in 10 Min!","END:VALARM","END:VEVENT");
+L.push("BEGIN:VEVENT",`DTSTART;TZID=Europe/Zurich:${dc}T${ah}${am}00`,`DTEND;TZID=Europe/Zurich:${dc}T${ah}${am}00`,
+`SUMMARY:Iftar (Akshami) - Tag ${d.day}${note}`,`DESCRIPTION:Fastenbrechen um ${d.ak}${note}`,
+"BEGIN:VALARM","TRIGGER:-PT15M","ACTION:DISPLAY","DESCRIPTION:Iftar in 15 Min!","END:VALARM",
+"BEGIN:VALARM","TRIGGER:-PT5M","ACTION:DISPLAY","DESCRIPTION:Iftar in 5 Min!","END:VALARM","END:VEVENT");
+if(d.special==="kadri"){L.push("BEGIN:VEVENT",`DTSTART;TZID=Europe/Zurich:${dc}T200000`,`DTEND;TZID=Europe/Zurich:${dc}T235900`,
+"SUMMARY:Nata e Kadrit (Laylatul Qadr)","DESCRIPTION:Die Nacht der Bestimmung","END:VEVENT")}});
+L.push("BEGIN:VEVENT","DTSTART;TZID=Europe/Zurich:20260320T070000","DTEND;TZID=Europe/Zurich:20260320T090000",
+"SUMMARY:Fiter Bajrami (Eid al-Fitr) - Namazi 07:00","DESCRIPTION:Bajram Gebet um 07:00 - Gez. Bajrami Mubarek!",
+"BEGIN:VALARM","TRIGGER:-PT60M","ACTION:DISPLAY","DESCRIPTION:Bajram Namazi in 1 Stunde!","END:VALARM",
+"BEGIN:VALARM","TRIGGER:-PT15M","ACTION:DISPLAY","DESCRIPTION:Bajram Namazi in 15 Min!","END:VALARM","END:VEVENT");
+L.push("END:VCALENDAR");return L.join("\r\n")}
+function downloadICS(){const b=new Blob([generateICS()],{type:"text/calendar;charset=utf-8"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="ramadan_2026_winterthur.ics";a.click();URL.revokeObjectURL(u)}
+
+// ============================================================
+// PWA – Service Worker & Install
+// ============================================================
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').then(r=>{console.log('SW registered',r.scope)}).catch(e=>{console.log('SW failed',e)});
+}
+
+let deferredPrompt;
+const installBanner=document.getElementById('installBanner');
+const installBtn=document.getElementById('installBtn');
+const installDismiss=document.getElementById('installDismiss');
+
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  installBanner.classList.add('show');
+});
+
+installBtn.addEventListener('click',async()=>{
+  if(!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const{outcome}=await deferredPrompt.userChoice;
+  console.log('Install:',outcome);
+  deferredPrompt=null;
+  installBanner.classList.remove('show');
+});
+
+installDismiss.addEventListener('click',()=>{installBanner.classList.remove('show')});
+
+window.addEventListener('appinstalled',()=>{installBanner.classList.remove('show');console.log('App installed!')});
+</script>
+</body>
+</html>
