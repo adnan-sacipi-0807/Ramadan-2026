@@ -6,6 +6,14 @@ Zweisprachig Deutsch/Albanisch (Umschalter in der App). Öffentliches Repo.
 ⚠️ **main ist sofort live** (GitHub Pages liefert direkt von main aus) — deshalb ist die
 Branch-Regel hier keine Formalität, sondern der einzige Schutz vor kaputten Live-Ständen.
 
+## Wo dieses Projekt liegt (Stand 06.08.2026)
+Arbeitsordner: **`C:\SaTechAI\privat\Ramadan-2026`**
+
+Die Projekte sind seit dem 05.08.2026 nach **Auftraggeber** sortiert — `satechai\` (eigene Firma),
+`digor\`, `jax-enx\`, `kunden\<name>\`, `amt-fuer-arbeit\`, `privat\`. Vorher lagen sie flach
+direkt unter `C:\SaTechAI\`. **Pfade ohne Firmenordner sind tot**: nicht danach suchen und keinen
+Ordner neu anlegen, sondern den Pfad oben verwenden.
+
 ## Aufbau (bewusst simpel — so lassen)
 - **Eine Datei ist die App:** `index.html` (Styles und JavaScript inline). Kein Build,
   kein Framework, keine Dependencies — das bleibt so.
