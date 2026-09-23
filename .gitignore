@@ -1,0 +1,37 @@
+# .gitignore — Ramadan-2026 (OEFFENTLICHES Repo, GitHub Pages)
+# Angelegt 23.09.2026. Bis dahin gab es keine: server.log war dadurch versehentlich
+# im oeffentlichen Repo (geprueft: nur 127.0.0.1 vom lokalen Testserver, keine
+# Besucher-IPs — sonst waeren es Personendaten gewesen).
+#
+# ⚠️ Dieses Repo ist OEFFENTLICH. Alles hier Eingecheckte kann jeder lesen.
+
+# ── Secrets ───────────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ── Logs und lokale Laufzeit-Dateien ─────────────────────────────────────
+# Logs eines lokalen Testservers koennen IP-Adressen von Besuchern enthalten.
+# In einem oeffentlichen Repo waeren das Personendaten.
+*.log
+server.log
+
+# ── Agenten-Arbeitsdateien ───────────────────────────────────────────────
+# .claude/ enthaelt heute nur launch.json (harmlos), kuenftig moeglicherweise
+# Notizen oder Zwischenstaende. launch.json bleibt bewusst erlaubt.
+.claude/*
+!.claude/launch.json
+
+# ── Betriebssystem und Editoren ──────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# ── Abhaengigkeiten ──────────────────────────────────────────────────────
+node_modules/
+__pycache__/
+*.pyc
